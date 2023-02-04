@@ -1,24 +1,28 @@
-eureka:
-  instance:
-    hostname: car-rental-discovery-service
-    port: '8070'
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: 'http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/'
-management:
-  endpoints:
-    enabled-by-default: true
-    web:
-      exposure:
-        include: prometheus
 spring:
   zipkin:
     base-url: 'http://zipkin.tracing:9411'
   sleuth:
     sampler:
       probability: '1.0'
+
 logging:
   level:
     root: INFO
+
+eureka:
+  instance:
+    hostname: 
+    port: '8070'
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: 'http://car-rental-discovery-service:8070/eureka/'
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: prometheus
+
