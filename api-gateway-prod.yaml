@@ -11,8 +11,7 @@ logging:
 
 eureka:
   instance:
-    hostname: 
-    port: '8070'
+    hostname: car-rental-api-gateway
   client:
     registerWithEureka: true
     fetchRegistry: true
