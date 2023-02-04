@@ -21,4 +21,4 @@ spring:
       probability: '1.0'
 logging:
   level:
-    root: DEBUG
+    root: INFO
