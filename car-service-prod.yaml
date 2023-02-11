@@ -1,0 +1,49 @@
+app:
+  loki:
+    baseurl: http://loki-write.logging:3100/loki/api/v1/push
+    level: DEBUG
+
+car-rental-app:
+  admin:
+    email: admin
+    password: admin123
+  jwt-secret: sWDXQcubDCnNsll7DoE6s9H2idu/oQoZQJ0eVoRZCN1uLuWE2SCXd3jPdyu3tIBp
+eureka:
+  client:
+    fetchRegistry: 'true'
+    registerWithEureka: 'true'
+    serviceUrl:
+      defaultZone: http://discovery-service:8070/eureka/
+  instance:
+    hostname: car-rental-car-service
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: 'true'
+    prometheus:
+      enabled: 'true'
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+queue:
+  car-available: CAR_AVAILABLE_QUEUE
+  car-unavailable: CAR_UNAVAILABLE_QUEUE
+  currency-convert-request: CURRENCY_CONVERT_REQUEST_QUEUE
+  order-create: ORDER_CREATE_QUEUE
+  order-status-failure: ORDER_STATUS_FAILURE_QUEUE
+  order-status-success: ORDER_STATUS_SUCCESS_QUEUE
+  order-update: ORDER_UPDATE_QUEUE
+  order-update-status: ORDER_UPDATE_STATUS_QUEUE
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:example@car-service-car-service-db:27017/car?authSource=admin
+  rabbitmq:
+    host: rabbitmq.messaging
+  sleuth:
+    sampler:
+      probability: '1.0'
+  zipkin:
+    base-url: http://zipkin.tracing:9411

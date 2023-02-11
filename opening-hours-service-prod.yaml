@@ -1,0 +1,35 @@
+app:
+  loki:
+    baseurl: http://loki-write.logging:3100/loki/api/v1/push
+    level: DEBUG
+
+eureka:
+  client:
+    fetchRegistry: 'true'
+    registerWithEureka: 'true'
+    serviceUrl:
+      defaultZone: http://discovery-service:8070/eureka/
+  instance:
+    hostname: car-rental-opening-hours-service
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: 'true'
+    prometheus:
+      enabled: 'true'
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:example@opening-hours-service-opening-hours-service-db:27017/openinghours?authSource=admin
+  rabbitmq:
+    host: rabbitmq.messaging
+  sleuth:
+    sampler:
+      probability: '1.0'
+  zipkin:
+    base-url: http://zipkin.tracing:9411

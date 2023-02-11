@@ -1,0 +1,30 @@
+app:
+  loki:
+    baseurl: http://loki-write.logging:3100/loki/api/v1/push
+    level: DEBUG
+
+eureka:
+  client:
+    fetchRegistry: 'false'
+    registerWithEureka: 'false'
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: discovery-service
+  server:
+    waitTimeInMsWhenSyncEmpty: '5'
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: 'true'
+    prometheus:
+      enabled: 'true'
+server:
+  port: '8070'
+spring:
+  sleuth:
+    sampler:
+      probability: '1.0'
+  zipkin:
+    base-url: http://zipkin.tracing:9411

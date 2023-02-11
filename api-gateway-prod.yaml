@@ -1,27 +1,27 @@
-spring:
-  zipkin:
-    base-url: 'http://zipkin.tracing:9411'
-  sleuth:
-    sampler:
-      probability: '1.0'
-
+app:
+  loki:
+    baseurl: http://loki-write.logging:3100/loki/api/v1/push
+    level: DEBUG
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: 'http://discovery-service:8070/eureka/'
+  instance:
+    hostname: car-rental-api-gateway
 logging:
   level:
     root: INFO
-
-eureka:
-  instance:
-    hostname: car-rental-api-gateway
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: 'http://discovery-service:8070/eureka/'
-
 management:
   endpoints:
     enabled-by-default: true
     web:
       exposure:
         include: prometheus
-
+spring:
+  sleuth:
+    sampler:
+      probability: '1.0'
+  zipkin:
+    base-url: 'http://zipkin.tracing:9411'
