@@ -11,7 +11,7 @@ eureka:
 spring:
   data:
     mongodb:
-      uri: mongodb://root:example@currency-service-currency-service-db:27017/order?authSource=admin
+      uri: mongodb://root:example@currency-service-db:27017/order?authSource=admin
   rabbitmq:
     host: rabbitmq.messaging
   sleuth:
