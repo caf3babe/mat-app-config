@@ -1,27 +1,14 @@
 app:
-  loki:
-    baseurl: http://loki-write.logging:3100/loki/api/v1/push
-    level: DEBUG
-
 eureka:
-  client:
-    fetchRegistry: 'true'
-    registerWithEureka: 'true'
-    serviceUrl:
-      defaultZone: http://discovery-service:8070/eureka/
   instance:
-    hostname: car-rental-order-service
-management:
-  endpoint:
-    health:
-      probes:
-        enabled: 'true'
-    prometheus:
-      enabled: 'true'
-  endpoints:
-    web:
-      exposure:
-        include: prometheus
+    hostname: order-service
+  client:
+    enabled: true
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://discovery-service.apps:8070/eureka/
+
 spring:
   data:
     mongodb:
@@ -30,6 +17,7 @@ spring:
     host: rabbitmq.messaging
   sleuth:
     sampler:
-      probability: '1.0'
+      probability: 1.0
   zipkin:
+    enabled: false
     base-url: http://zipkin.tracing:9411
