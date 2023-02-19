@@ -6,7 +6,7 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://discovery-service.apps:8070/eureka/
+      defaultZone: http://discovery-service.car-rental:8070/eureka/
 
 car-rental-app:
   admin:
